@@ -79,7 +79,8 @@ export default class Product{
     updateCategoryName(category){
         return _mm.request({
             url     : _mm.getServerUrl('/manage/category/set_category_name.do'),
-            data    : category
+            data    : category,
+            method  : 'POST',
         });
     }
 }
