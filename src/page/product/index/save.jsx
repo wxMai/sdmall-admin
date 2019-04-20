@@ -14,6 +14,15 @@ import PageTitle    from 'component/page-title/index.jsx';
 import FileUploader from 'component/file-uploader/index.jsx';
 // import RichEditor   from 'component/rich-editor/index.jsx';
 
+// import '../../../component/bootstrap-wysiwyg-master/index.css';
+// import '../../../component/bootstrap-wysiwyg-master/bootstrap-wysiwyg';
+
+// import 'bootstrap'
+// import '../../../component/summernote-0.8.11-dist/summernote-lite.css';
+// import '../../../component/summernote-0.8.11-dist/summernote';
+import '../../../../node_modules/summernote-webpack-fix/dist/summernote.css'
+import '../../../../node_modules/summernote-webpack-fix/dist/summernote'
+
 import MMUtile from 'util/mm.jsx';
 import Product      from 'service/product.jsx';
 
@@ -45,6 +54,17 @@ const ProductSave = React.createClass({
         this.loadFirstCategory();
         // 初始化产品
         this.loadProduct();
+
+        $('#summernote').summernote({
+            height: 300,
+            onKeyup: function(e) {
+                console.log($("#summernote").code());
+                this.setState({
+                    detail: $("#summernote").code()
+                });
+            },
+        });
+        // $('#product-editor').wysiwyg();
     },
     // 加载一级分类
     loadFirstCategory(){
@@ -84,7 +104,8 @@ const ProductSave = React.createClass({
                 if(product.firstCategoryId){
                     this.loadSecondCategory();
                 }
-                this.refs['rich-editor'].setValue(product.detail);
+                $('#summernote').summernote('code', product.detail);
+                //this.refs['rich-editor'].setValue(product.detail);
             }, err => {
                 alert(err.msg || '哪里不对了~');
             });
@@ -205,6 +226,7 @@ const ProductSave = React.createClass({
         // 阻止提交
         e.preventDefault();
         // 需要提交的字段
+        this.state.detail = $('#summernote').summernote('code');
         let product = {
                 categoryId          : this.state.secondCategoryId || this.state.firstCategoryId || 0,
                 name                : this.state.name,
@@ -343,7 +365,9 @@ const ProductSave = React.createClass({
                             <div className="form-group">
                                 <label htmlFor="inputEmail3" className="col-md-2 control-label">商品详情</label>
                                 <div className="col-md-10">
-                                    <RichEditor ref="rich-editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>
+                                    {/*<RichEditor ref="rich-editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>*/}
+                                    <textarea id="summernote" name="editordata"></textarea>
+                                    {/*<div id='product-editor'></div>*/}
                                 </div>
                             </div>
                             <div className="form-group">
