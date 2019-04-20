@@ -43,7 +43,8 @@ export default class Product{
     saveProduct(product){
         return _mm.request({
             url     : _mm.getServerUrl('/manage/product/save.do'),
-            data    : product
+            data    : product,
+            method  : 'POST',
         });
     }
     // 改变商品状态
