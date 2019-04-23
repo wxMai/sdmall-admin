@@ -84,4 +84,22 @@ export default class Product{
             method  : 'POST',
         });
     }
+    // 删除品类
+    delCategory(categoryId){
+        return _mm.request({
+            url     : _mm.getServerUrl('/manage/category/del_category.do'),
+            data    : {
+                categoryId : categoryId
+            }
+        });
+    }
+    // 删除品类
+    delProduct(productId){
+        return _mm.request({
+            url     : _mm.getServerUrl('/manage/product/del.do'),
+            data    : {
+                productId : productId
+            }
+        });
+    }
 }

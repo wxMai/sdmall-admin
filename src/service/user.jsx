@@ -49,4 +49,11 @@ export default class User{
             method  : 'POST',
         });
     }
+    // 管理员列表
+    adminList() {
+        return mm.request({
+            url     : mm.getServerUrl('/user/adminList.do'),
+            method  : 'GET',
+        });
+    }
 }

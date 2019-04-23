@@ -14,94 +14,58 @@ import './index.scss';
 import MMUtile      from 'util/mm.jsx';
 import PageTitle    from 'component/page-title/index.jsx';
 
-import Product      from 'service/product.jsx';
+import User      from 'service/user.jsx';
 
 const _mm = new MMUtile();
-const _product  = new Product();
+const _user  = new User();
 
 const ProductCategory = React.createClass({
     getInitialState() {
         return {
-            parentCategoryId    : this.props.params.categoryId || 0,
-            categoryList        : []
+            userList        : [],
+            pageNum         : 1,
+            pages           : 0
         };
     },
     componentDidMount(){
-        this.initCategory(this.state.parentCategoryId);
+        this.initUserList();
     },
-    componentDidUpdate(prevProps){
-        let oldPath = prevProps.location.pathname,
-            newPath = this.props.location.pathname,
-            newId   = this.props.params.categoryId || 0;
-        if(oldPath !== newPath){
-            this.initCategory(newId);
-        }   
-    },
-    initCategory(categoryId){
+    initUserList(){
         // 按父id查询对应的品类
-        _product.getCategory(categoryId).then(res => {
+        _user.adminList().then(res => {
             this.setState({
-                parentCategoryId : categoryId,
-                categoryList: res
+                userList: res
             });
         }, errMsg => {
             _mm.errorTips(errMsg);
         });
     },
-    onUpdateName(categoryId, categoryName){
-        let newName = window.prompt("请输入新的品类名称", categoryName); 
-        if(newName){
-            // 更新
-            _product.updateCategoryName({
-                categoryId : categoryId,
-                categoryName : newName
-            }).then(res => {
-                _mm.successTips(res);
-                this.initCategory(this.state.parentCategoryId);
-            }, errMsg => {
-                _mm.errorTips(errMsg);
-            });
-        }else{
-            _mm.errorTips('请输入正确的品类名称');
-        }
-    },
-    onDelete(categoryId){
-        if(confirm('是否确认删除该分类？')){
-            _product.delCategory(categoryId).then(res => {
-                _mm.successTips(res);
-                this.initCategory();
-            }, errMsg => {
-                _mm.errorTips(errMsg);
-            });
-        }
-    },
     render() {
         return (
             <div id="page-wrapper">
-                <PageTitle pageTitle="品类管理">
+                <PageTitle pageTitle="管理员管理">
                     <div className="page-header-right">
                         <Link className="btn btn-primary" to="/product.category/add">
                             <i className="fa fa-plus fa-fw"></i>
-                            <span>添加品类</span>
+                            <span>添加管理员</span>
                         </Link>
                     </div>
                 </PageTitle>
                 <div className="row">
-                    <div className="col-lg-12">
-                        <p>当前商品分类ID：{this.state.parentCategoryId}</p>
-                    </div>
                     <div className="table-wrap col-lg-12">
                         <table className="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>品类ID</th>
-                                    <th>品类名称</th>
+                                    <th>用户ID</th>
+                                    <th>用户名</th>
+                                    <th>邮箱</th>
+                                    <th>手机</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {
-                                this.state.categoryList.map((category, index) => {
+                                this.state.userList.map((userInfo, index) => {
                                     return (
                                         <tr key={index}>
                                             <td>{category.id}</td>

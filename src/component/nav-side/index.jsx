@@ -56,14 +56,23 @@ const SideNav = React.createClass({
                                 </li>
                             </ul>
                         </li>
-                        {/*
                         <li>
-                            <Link to="/user">
+                            <Link>
                                 <i className="fa fa-user-o fa-fw"></i>
                                 <span>用户</span>
                             </Link>
+                            <ul className="nav nav-second-level collapse in">
+                                <li>
+                                    <Link to="/user.admin" activeClassName="active">管理员管理</Link>
+                                </li>
+                                <li>
+                                    <Link to="/user" activeClassName="active">会员管理</Link>
+                                </li>
+                                <li>
+                                    <Link to="/user.message" activeClassName="active">留言管理</Link>
+                                </li>
+                            </ul>
                         </li>
-                        */}
                     </ul>
                 </div>
             </div>
