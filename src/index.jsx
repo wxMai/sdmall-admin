@@ -36,6 +36,9 @@ import AdminSave            from 'page/user/admin/save.jsx';
 import User                 from 'page/user/index/index.jsx';
 import UserSave             from 'page/user/index/save.jsx';
 
+import UserMessage from 'page/user/message/index.jsx';
+import UserMessageDetail from 'page/user/message/detail.jsx';
+
 import Login                from 'page/login/index.jsx';
 import ErrorPage            from 'page/error/index.jsx';
 import BlankPage            from 'page/blank/index.jsx';
@@ -73,6 +76,11 @@ render(
                 <IndexRedirect to="index" />
                 <Route path="index" component={Admin}/>
                 <Route path="save(/:pId)" component={AdminSave}/>
+            </Route>
+            <Route path="user.message" component={Layout}>
+                <IndexRedirect to="index" />
+                <Route path="index" component={UserMessage}/>
+                <Route path="detail(/:messageId)" component={UserMessageDetail}/>
             </Route>
             <Route path="user" component={Layout}>
                 <IndexRedirect to="index" />

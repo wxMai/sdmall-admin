@@ -98,4 +98,30 @@ export default class User{
             },
         });
     }
+    // 管理员列表
+    messageList(listParam) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/userMessageList.do'),
+            method  : 'GET',
+            data : listParam,
+        });
+    }
+    // 管理员列表
+    messageInfo(messageId) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/userMessageInfo.do'),
+            method  : 'GET',
+            data : {
+                messageId : messageId
+            },
+        });
+    }
+    // 留言回复
+    messageResponse(data) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/userMessageResponse.do'),
+            method  : 'POST',
+            data : data,
+        });
+    }
 }
