@@ -31,8 +31,7 @@ const ProductCategory = React.createClass({
         this.initUserList();
     },
     initUserList() {
-        // 按父id查询对应的品类
-        _user.adminList().then(res => {
+        _user.normalUserList().then(res => {
             this.setState(res);
         }, errMsg => {
             _mm.errorTips(errMsg);
@@ -51,11 +50,11 @@ const ProductCategory = React.createClass({
     render() {
         return (
             <div id="page-wrapper">
-                <PageTitle pageTitle="管理员管理">
+                <PageTitle pageTitle="账号管理">
                     <div className="page-header-right">
-                        <Link className="btn btn-primary" to="/user.admin/save">
+                        <Link className="btn btn-primary" to="/user/save">
                             <i className="fa fa-plus fa-fw"></i>
-                            <span>添加管理员</span>
+                            <span>添加账号</span>
                         </Link>
                     </div>
                 </PageTitle>
@@ -83,7 +82,7 @@ const ProductCategory = React.createClass({
                                             <td><span>{userInfo.email}</span></td>
                                             <td><span>{userInfo.phone}</span></td>
                                             <td>
-                                                <Link className="opear" to={'/user.admin/save/' + userInfo.id}>编辑</Link>
+                                                <Link className="opear" to={'/user/save/' + userInfo.id}>编辑</Link>
                                                 <a className="opera"
                                                    onClick={this.delUser.bind(this, userInfo.id)}>删除</a>
                                             </td>

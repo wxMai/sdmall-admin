@@ -30,7 +30,12 @@ import ProductCategory      from 'page/product/category/index.jsx';
 import ProductCategoryAdd   from 'page/product/category/add.jsx';
 import OrderList            from 'page/order/index.jsx';
 import OrderDetail          from 'page/order/detail.jsx';
-import User                 from 'page/user/index.jsx';
+
+import Admin                 from 'page/user/admin/index.jsx';
+import AdminSave            from 'page/user/admin/save.jsx';
+import User                 from 'page/user/index/index.jsx';
+import UserSave             from 'page/user/index/save.jsx';
+
 import Login                from 'page/login/index.jsx';
 import ErrorPage            from 'page/error/index.jsx';
 import BlankPage            from 'page/blank/index.jsx';
@@ -64,7 +69,16 @@ render(
                 <Route path="detail/:orderNumber" component={OrderDetail}/>
             </Route>
             {/* user */}
-            <Route path="user" component={User}/>
+            <Route path="user.admin" component={Layout}>
+                <IndexRedirect to="index" />
+                <Route path="index" component={Admin}/>
+                <Route path="save(/:pId)" component={AdminSave}/>
+            </Route>
+            <Route path="user" component={Layout}>
+                <IndexRedirect to="index" />
+                <Route path="index" component={User}/>
+                <Route path="save(/:pId)" component={UserSave}/>
+            </Route>
             {/* without layout */}
             <Route path="login" component={Login}/>
             <Route path="blank" component={Layout}>

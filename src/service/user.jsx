@@ -52,8 +52,50 @@ export default class User{
     // 管理员列表
     adminList() {
         return mm.request({
-            url     : mm.getServerUrl('/user/adminList.do'),
+            url     : mm.getServerUrl('/manage/user/adminList.do'),
             method  : 'GET',
+        });
+    }
+    // 管理员列表
+    normalUserList() {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/normalUserList.do'),
+            method  : 'GET',
+        });
+    }
+    // 保存用户
+    saveAdmin(data) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/saveAdmin.do'),
+            method  : 'POST',
+            data : data,
+        });
+    }
+    // 保存用户
+    saveNormalUser(data) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/saveNormalUser.do'),
+            method  : 'POST',
+            data : data,
+        });
+    }
+    // 获取用户信息
+    getUserInfo(id){
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/info.do'),
+            method  : 'GET',
+            data : {
+                userId : id
+            },
+        });
+    }
+    delUser(id){
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/delUser.do'),
+            method  : 'POST',
+            data : {
+                userId : id
+            },
         });
     }
 }
