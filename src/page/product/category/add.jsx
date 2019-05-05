@@ -65,21 +65,7 @@ const ProductCategoryAdd = React.createClass({
                 <div className="row">
                     <div className="form-wrap col-lg-12">
                         <form className="form-horizontal" onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <label className="col-md-2 control-label">{this.state.pageName}</label>
-                                <div className="col-md-10">
-                                    <select className="form-control cate-select" name="parentId" onChange={this.onValueChange}>
-                                        <option value="0">/所有</option>
-                                        {
-                                            this.state.categoryList.map(function(category, index) {
-                                                return (
-                                                    <option value={category.id} key={index}>/所有/{category.name}</option>
-                                                );
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                            </div>
+
                             <div className="form-group">
                                 <label htmlFor="category-name" className="col-md-2 control-label">品类名称</label>
                                 <div className="col-md-3">

@@ -124,4 +124,14 @@ export default class User{
             data : data,
         });
     }
+    // 留言删除
+    messageDel(messageId) {
+        return mm.request({
+            url     : mm.getServerUrl('/manage/user/userMessageDel.do'),
+            method  : 'GET',
+            data : {
+                'messageId' : messageId
+            },
+        });
+    }
 }

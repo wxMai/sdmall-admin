@@ -61,6 +61,16 @@ const ProductCategory = React.createClass({
             });
         }
     },*/
+    onDelete(messageId){
+        if(confirm('是否确认删除该留言？')){
+            _user.messageDel(messageId).then(res => {
+                _mm.successTips(res);
+                this.initList();
+            }, errMsg => {
+                _mm.errorTips(errMsg);
+            });
+        }
+    },
     render() {
         return (
             <div id="page-wrapper">
@@ -103,6 +113,7 @@ const ProductCategory = React.createClass({
                                             <td><span>{info.content}</span></td>
                                             <td>
                                                 <Link className="opear" to={'/user.message/detail/' + info.id}> 详情 </Link>
+                                                <a className="opera" onClick={this.onDelete.bind(this, info.id)}> 删除 </a>
                                             </td>
                                         </tr>
                                     );
