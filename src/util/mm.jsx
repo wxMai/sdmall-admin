@@ -12,7 +12,7 @@ const conf = {
     // serverHost: 'http://admin.sdmall.wang'
     // dev
     serverHost: '',
-    imageHost: 'http://img.sdmall.wang/',
+    imageHost: 'http://img.sdmall.com/',
 }
 
 class MMUtil{
