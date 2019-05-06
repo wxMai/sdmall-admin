@@ -200,10 +200,10 @@ const ProductDetail = React.createClass({
                                     }
                                 </div>
                             </div>
-                            <div className="form-group">
+                           {/* <div className="form-group">
                                 <label htmlFor="inputEmail3" className="col-md-2 control-label">商品详情</label>
                                 <div className="col-md-10" dangerouslySetInnerHTML={{__html: this.state.detail}}></div>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                 </div>

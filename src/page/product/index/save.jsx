@@ -362,14 +362,14 @@ const ProductSave = React.createClass({
                                     <FileUploader onSuccess={this.onUploadSuccess} onError={this.onUploadError}/>
                                 </div>
                             </div>
-                            <div className="form-group">
+                            {/*<div className="form-group">
                                 <label htmlFor="inputEmail3" className="col-md-2 control-label">商品详情</label>
                                 <div className="col-md-10">
-                                    {/*<RichEditor ref="rich-editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>*/}
+                                    <RichEditor ref="rich-editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>
                                     <textarea id="summernote" name="editordata"></textarea>
-                                    {/*<div id='product-editor'></div>*/}
+                                    <div id='product-editor'></div>
                                 </div>
-                            </div>
+                            </div>*/}
                             <div className="form-group">
                                 <div className="col-md-offset-2 col-md-10">
                                     <button type="btn" className="btn btn-xl btn-primary" onClick={this.onSubmit}>提交</button></div>
