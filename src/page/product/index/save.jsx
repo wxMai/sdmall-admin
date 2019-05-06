@@ -226,7 +226,8 @@ const ProductSave = React.createClass({
         // 阻止提交
         e.preventDefault();
         // 需要提交的字段
-        this.state.detail = $('#summernote').summernote('code');
+        // this.state.detail = $('#summernote').summernote('code');
+        this.state.detail = '';
         let product = {
                 categoryId          : this.state.secondCategoryId || this.state.firstCategoryId || 0,
                 name                : this.state.name,
