@@ -66,7 +66,7 @@ const SideNav = React.createClass({
                                     <Link to="/user.admin" activeClassName="active">管理员管理</Link>
                                 </li>
                                 <li>
-                                    <Link to="/user" activeClassName="active">会员管理</Link>
+                                    <Link to="/user" activeClassName="active">用户管理</Link>
                                 </li>
                                 <li>
                                     <Link to="/user.message" activeClassName="active">留言管理</Link>

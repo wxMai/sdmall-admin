@@ -64,8 +64,8 @@ const ProductCategory = React.createClass({
                         <table className="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>用户ID</th>
-                                <th>用户名</th>
+                                <th>管理员ID</th>
+                                <th>管理员姓名</th>
                                 <th>邮箱</th>
                                 <th>手机</th>
                                 <th>操作</th>

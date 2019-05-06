@@ -64,7 +64,7 @@ const ProductSave = React.createClass({
         if (!params.username) {
             result = {
                 status: false,
-                msg: '请输入用户名'
+                msg: '请输入管理员姓名'
             }
         }
         if (!params.email) {
@@ -124,13 +124,13 @@ const ProductSave = React.createClass({
                     <div className="form-wrap col-lg-12">
                         <div className="form-horizontal">
                             <div className="form-group">
-                                <label htmlFor="name" className="col-md-2 control-label">用户名</label>
+                                <label htmlFor="name" className="col-md-2 control-label">管理员姓名</label>
                                 <div className="col-md-5">
                                     <input type="text"
                                            className="form-control"
                                            name="username"
                                            id="username"
-                                           placeholder="请输入用户名"
+                                           placeholder="请输入管理员姓名"
                                            value={this.state.username}
                                            onChange={this.onValueChange}/>
                                 </div>

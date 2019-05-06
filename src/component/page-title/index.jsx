@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 
 const PageTitle = React.createClass({
     componentDidMount(){
-        document.title = this.props.pageTitle || 'MMall Admin'
+        document.title = this.props.pageTitle || 'Flora花店管理后台'
     },
     render() {
         return (
